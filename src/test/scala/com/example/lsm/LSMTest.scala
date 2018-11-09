@@ -1,12 +1,11 @@
+package com.example.lsm
+
 import java.io._
 import java.nio.ByteBuffer
-import java.nio.file.{Files, Path, Paths}
+import java.nio.file.{Files, Paths}
 import java.util
 
-import com.example.jutil.{Constant, DataTypeTransfer, SSConfig, TestSerObject}
-import com.example.lsm._
-import com.example.srpc.nettyrpc.serde.{ByteBufferOutputStream}
-import io.netty.buffer.ByteBuf
+import com.example.jutil.{Constant, SSConfig}
 import org.junit.{Assert, Test}
 
 import scala.collection.mutable
@@ -18,7 +17,7 @@ import scala.util.Random
   * Created by yilong on 2018/2/1.
   */
 @Test
-class test extends Assert {
+class LSMTest extends Assert {
 
   @Test
   def test_metatable() : Unit = {
@@ -114,8 +113,6 @@ class test extends Assert {
     val ssfileman = new LSMFileManager(new SSConfig)
 
     val key = "key_1010"
-
-    import java.net.URL
     val loader = Thread.currentThread.getContextClassLoader
     val datafile = "test.sstx"
 
